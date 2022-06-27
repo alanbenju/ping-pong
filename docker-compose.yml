@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+    postgres:
+        image: postgres:10.4
+        ports:
+            - "35000:5432"
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+            POSTGRES_DB: ping-pong
+        networks:
+            - postgres
+    pgadmin:
+        links:
+            - postgres:postgres
+        container_name: pgadmin
+        image: dpage/pgadmin4
+        ports:
+            - "8080:80"
+        volumes:
+            - /data/pgadmin:/root/.pgadmin
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@admin.com
+            PGADMIN_DEFAULT_PASSWORD: admin
+        networks:
+            - postgres
+networks:
+    postgres:
+        driver: bridge
