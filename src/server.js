@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 //import attendeesRoutes from './routes/attendees.route'
 //import presentationRoutes from './routes/presentations.route'
 import 'dotenv/config'
-import { connectToDB } from './db'
+import { startDB } from './db'
 import usersRoutes from './routes/users.route'
 import gamesRoutes from './routes/game.route'
 import adminRoutes from './routes/admins.route'
@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
   next()
 })
 
-connectToDB()
+startDB()
 
 app.use('/games', gamesRoutes)
 app.use('/users', usersRoutes)

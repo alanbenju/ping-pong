@@ -1,6 +1,6 @@
 import express from 'express'
 import usersController from '../controllers/users.controller'
-import isLoggedIn from '../middlewares/isLoggedIn.middleware'
+import { isLoggedIn } from '../middlewares/isLoggedIn'
 
 const usersRoutes = express.Router()
 

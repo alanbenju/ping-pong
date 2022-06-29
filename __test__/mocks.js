@@ -43,3 +43,8 @@ export const userMock3 = {
 export const userMock4 = {
     username: "test4"
 }
+
+
+export const isLoggedInMock = async (req, res, next) => {
+    next()
+}

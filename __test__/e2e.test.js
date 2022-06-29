@@ -1,8 +1,22 @@
 import request from 'supertest'
 import app from '../src/server'
 import adminService from '../src/services/admin.service';
-import { adminMock, gameMock, gameMock1, gameMock2, gameMock3, gameMock4, userMock1, userMock2, userMock3, userMock4 } from './mocks';
+import { adminMock, gameMock1, gameMock2, gameMock3, gameMock4, isLoggedInMock, userMock1, userMock2, userMock3, userMock4 } from './mocks';
 import createTestDatabase from './seed'
+
+jest.mock('../src/middlewares/isLoggedIn', () => {
+  const originalModule = jest.requireActual('../src/middlewares/isLoggedIn');
+  return {
+    __esModule: true,
+    ...originalModule,
+    isLoggedIn: jest.fn((req, res, next) => {
+      next()
+    }),
+  };
+});
+
+
+
 
 /**
  * I'm doing all my tests (unit and e2e) in one file all together to work faster
@@ -16,7 +30,6 @@ describe('All tests ', () => {
   let closedbConnection;
   let cleanDatabase;
   beforeAll(async () => {
-    process.env.NODE_ENV = 'test';
     let { closeConnection, cleanDB } = await createTestDatabase()
     closedbConnection = closeConnection;
     cleanDatabase = cleanDB

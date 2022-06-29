@@ -1,6 +1,6 @@
 import express from 'express'
 import gamesController from '../controllers/game.controller'
-import isLoggedIn from '../middlewares/isLoggedIn.middleware'
+import { isLoggedIn } from '../middlewares/isLoggedIn'
 
 const gamesRoutes = express.Router()
 
