@@ -24,6 +24,18 @@ services:
             PGADMIN_DEFAULT_PASSWORD: 
         networks:
             - postgres
+
+    postgres-test:
+        image: postgres:10.4
+        ports:
+            - "35001:5432"
+        environment:
+            POSTGRES_USER: 
+            POSTGRES_PASSWORD: 
+            POSTGRES_DB: ping-pong
+        networks:
+            - postgres
+
 networks:
     postgres:
         driver: bridge
