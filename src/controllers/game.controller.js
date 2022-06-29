@@ -15,7 +15,7 @@ class GamesController {
   async create (req, res) {
     try {
       const game = req.body
-      await usersService.setGame(game.winnerId, game.loserId)
+      await usersService.setGame(game.winner_id, game.loser_id)
       const createdGame = await gamesService.create(game);
       const response = {
         result: createdGame

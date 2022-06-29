@@ -1,5 +1,4 @@
 import Game from "../models/game.model"
-import usersService from "./users.service"
 
 class GamesService {
   async get() { 
@@ -16,10 +15,6 @@ class GamesService {
 
   async create (game) {
     try {
-      const winnerId = game.winnerId
-      const loserId = game.loserId
-      await usersService.setGame(winnerId, loserId);
-
       await Game.createGame(game)
     } catch (err) {
       console.log('Error while creating game', err)

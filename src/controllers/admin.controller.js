@@ -3,14 +3,6 @@ import adminService from "../services/admin.service"
 class AdminController {
   constructor() { }
 
-  async find(req, res) {
-    const admins = await adminService.get();
-    const response = {
-      result: admins,
-    }
-    res.send(response)
-  }
-
   async signup(req, res) {
     try {
       const result = await adminService.signup(req.body)

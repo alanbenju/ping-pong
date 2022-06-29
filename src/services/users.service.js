@@ -18,13 +18,13 @@ class UsersService {
     }
   }
 
-  async setGame(winnerId, loserId) {
+  async setGame(winner_id, loser_id) {
     try {
-      const winner = await User.findOneById(winnerId)
-      const loser = await User.findOneById(loserId)
+      const winner = await User.findOneById(winner_id)
+      const loser = await User.findOneById(loser_id)
       if (winner && loser) {
-        await User.wonGame(winnerId, winner.wins)
-        await User.lostGame(loserId, loser.losses)
+        await User.wonGame(winner_id, winner.wins)
+        await User.lostGame(loser_id, loser.losses)
       }
       else throw new Error("Not all users exist")
     }

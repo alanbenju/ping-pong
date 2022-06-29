@@ -11,7 +11,6 @@ class AdminService {
       const adminToCreate = new Admin(admin)
       const createdAdmin = await Admin.createAdmin(adminToCreate)
       return authService.buildToken(createdAdmin)
-      // login and return jwt
     } catch (err) {
       console.log('Error while creating admin', err)
       throw new Error('Error while creating admin') // TODO: Throw custom error
